@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -500,13 +499,20 @@ VERDADEIRO</pre>
       </div>
 
       <div class="actions">
-        <button class="primary" id="downloadInterpreter">
+
+        <!-- DOWNLOAD DIRETO DO ARQUIVO ZIP COMPLETO -->
+        <a
+          class="btn primary"
+          id="downloadInterpreter"
+          href="./VECTRA%20EXTENSION.zip"
+          download="VECTRA EXTENSION.zip">
           ↓ Baixar VECTRA EXTENSION (.zip)
-        </button>
+        </a>
 
         <button class="secondary" id="vsixInfo">
           Extensão VS Code (.vsix)
         </button>
+
       </div>
     </div>
 
@@ -525,39 +531,8 @@ VERDADEIRO</pre>
 
 <script>
 
-// ZIP do interpretador VECTRA incorporado ao próprio HTML.
-const interpreterZip = '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';
-
-function downloadBase64(data, filename, mime) {
-  const binary = atob(data);
-  const bytes = new Uint8Array(binary.length);
-
-  for (let i = 0; i < binary.length; i++) {
-    bytes[i] = binary.charCodeAt(i);
-  }
-
-  const blob = new Blob([bytes], {type:mime});
-  const url = URL.createObjectURL(blob);
-
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = filename;
-
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-
-  setTimeout(() => URL.revokeObjectURL(url), 1500);
-}
-
-// Botão de download do VECTRA EXTENSION.
+// Atualiza a mensagem quando o usuário clicar no download.
 document.getElementById('downloadInterpreter').addEventListener('click', () => {
-  downloadBase64(
-    interpreterZip,
-    'VECTRA EXTENSION.zip',
-    'application/zip'
-  );
-
   document.getElementById('downloadStatus').textContent =
     'Download do VECTRA EXTENSION iniciado.';
 });
@@ -570,8 +545,6 @@ document.getElementById('vsixInfo').addEventListener('click', () => {
 });
 
 </script>
-<a href="./VECTRA EXTENSION.zip" download="VECTRA EXTENSION.zip">
-    Baixar VECTRA EXTENSION
-</a>
+
 </body>
 </html>
