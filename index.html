@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -20,7 +21,6 @@
 }
 
 * { box-sizing:border-box }
-
 html { scroll-behavior:smooth }
 
 body {
@@ -298,19 +298,14 @@ footer {
   }
 
   .grid { grid-template-columns:1fr 1fr }
-
   .symbol-grid { grid-template-columns:repeat(4,1fr) }
-
   .download-panel { display:block }
-
   .download-panel .actions { margin-top:20px }
 }
 
 @media(max-width:520px) {
   .navlinks { display:none }
-
   .grid { grid-template-columns:1fr }
-
   h1 { letter-spacing:-2px }
 }
 </style>
@@ -494,13 +489,13 @@ VERDADEIRO</pre>
         <p>Baixe o pacote atual do interpretador Python para testar arquivos .vx.</p>
 
         <p class="note">
-          Este arquivo ZIP contém os quatro módulos do interpretador. Ele não é o pacote instalável da extensão VS Code (.vsix).
+          O arquivo ZIP contém os módulos do interpretador. O arquivo VSIX é a extensão instalável do VECTRA para o Visual Studio Code.
         </p>
       </div>
 
       <div class="actions">
 
-        <!-- DOWNLOAD DIRETO DO ARQUIVO ZIP COMPLETO -->
+        <!-- DOWNLOAD DO ZIP DO INTERPRETADOR -->
         <a
           class="btn primary"
           id="downloadInterpreter"
@@ -509,9 +504,14 @@ VERDADEIRO</pre>
           ↓ Baixar VECTRA EXTENSION (.zip)
         </a>
 
-        <button class="secondary" id="vsixInfo">
-          Extensão VS Code (.vsix)
-        </button>
+        <!-- DOWNLOAD REAL DO VSIX -->
+        <a
+          class="btn secondary"
+          id="downloadVsix"
+          href="./vectra-language-0.0.2.vsix"
+          download="vectra-language-0.0.2.vsix">
+          ↓ Baixar extensão VS Code (.vsix)
+        </a>
 
       </div>
     </div>
@@ -530,20 +530,15 @@ VERDADEIRO</pre>
 </footer>
 
 <script>
-
-// Atualiza a mensagem quando o usuário clicar no download.
 document.getElementById('downloadInterpreter').addEventListener('click', () => {
   document.getElementById('downloadStatus').textContent =
     'Download do VECTRA EXTENSION iniciado.';
 });
 
-// Informação sobre o pacote da extensão VS Code.
-document.getElementById('vsixInfo').addEventListener('click', () => {
-  alert(
-    'O pacote .vsix da extensão ainda não foi incluído neste site. Para habilitar esse download, é necessário empacotar a pasta completa da extensão VS Code.'
-  );
+document.getElementById('downloadVsix').addEventListener('click', () => {
+  document.getElementById('downloadStatus').textContent =
+    'Download da extensão VECTRA para VS Code iniciado.';
 });
-
 </script>
 
 </body>
