@@ -1,0 +1,26 @@
+
+{
+  "scopeName": "source.vectra",
+  "patterns": [
+    {
+      "name": "keyword.operator.vectra",
+      "match": "[,.:;]"
+    },
+    {
+      "name": "constant.numeric.vectra",
+      "match": "[0-9]+"
+    },
+    {
+      "name": "constant.character.vectra",
+      "match": "[{}()]"
+    },
+    {
+      "name": "keyword.operator.symbol.vectra",
+      "match": "[+*/=<>@%!?^&~#]"
+    }
+  ],
+  "repository": {},
+  "fileTypes": [
+    "vx"
+  ]
+}

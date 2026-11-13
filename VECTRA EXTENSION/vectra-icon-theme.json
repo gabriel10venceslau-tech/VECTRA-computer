@@ -1,0 +1,11 @@
+
+{
+  "iconDefinitions": {
+    "vectra-file": {
+      "iconPath": "./icons/vectra.png"
+    }
+  },
+  "fileExtensions": {
+    "vx": "vectra-file"
+  }
+}

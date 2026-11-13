@@ -1,0 +1,38 @@
+
+{
+  "name": "vectra-language",
+  "displayName": "VECTRA Language Support",
+  "description": "Suporte à linguagem VECTRA no Visual Studio Code.",
+  "version": "0.0.1",
+  "publisher": "vectra",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "vectra",
+        "aliases": ["VECTRA", "vectra"],
+        "extensions": [".vx"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "vectra",
+        "scopeName": "source.vectra",
+        "path": "./syntaxes/vectra.tmLanguage.json"
+      }
+    ],
+    "iconThemes": [
+      {
+        "id": "vectra-icon-theme",
+        "label": "VECTRA Official Icons",
+        "path": "./vectra-icon-theme.json"
+      }
+    ]
+  }
+}

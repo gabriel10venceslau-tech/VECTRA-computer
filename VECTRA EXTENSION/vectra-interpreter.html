@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>VECTRA Interpreter</title>
+</head>
+<body>
+  <h1>VECTRA Interpreter 0.1</h1>
+
+  <textarea id="code" rows="8" cols="50"
+    placeholder="Digite seu código VECTRA..."></textarea>
+
+  <br>
+  <button onclick="executeVectra()">Executar VECTRA</button>
+
+  <h2>Resultado:</h2>
+  <pre id="output"></pre>
+
+  <script>
+    function executeVectra() {
+      const code = document.getElementById("code").value;
+      const output = document.getElementById("output");
+
+      try {
+        if (!code.trim().endsWith(";")) {
+          throw new Error("Sequência não terminada com ;");
+        }
+
+        const elements = code.trim().slice(0, -1).split(".");
+        const results = [];
+
+        for (const element of elements) {
+          const match = element.match(
+            /^(\d+)(?:,(\d+))?(?:\(\+0\.(\d+)\))?$/
+          );
+
+          if (!match) {
+            throw new Error("Elemento VECTRA inválido: " + element);
+          }
+
+          let value = Number(match[1]);
+
+          if (match[2]) {
+            value *= Number(match[2]);
+          }
+
+          if (match[3]) {
+            value *= 10 ** Number(match[3]);
+          }
+
+          results.push(value);
+        }
+
+        output.textContent = results.join("\n");
+      } catch (error) {
+        output.textContent = "Erro: " + error.message;
+      }
+    }
+  </script>
+</body>
+</html>

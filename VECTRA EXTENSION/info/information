@@ -1,0 +1,212 @@
+# VECTRA — Documentação Oficial da Linguagem
+
+**Versão:** 1.0 — Especificação de referência
+
+## 1. O que é o VECTRA?
+
+VECTRA é uma linguagem e sistema de representação de informações criado com o objetivo de realizar funções semelhantes às desempenhadas pelo sistema binário nos computadores, utilizando uma estrutura própria de símbolos, números e operações.
+
+O projeto busca desenvolver uma forma própria de representar, interpretar e processar informações digitais.
+
+Sua extensão de arquivo é `.vx`.
+
+## 2. Alfabeto VECTRA
+
+O alfabeto possui 26 letras, cada uma representada por um símbolo exclusivo.
+
+| Letra | Símbolo |
+|---|---|
+| A | `|` |
+| B | `—` |
+| C | `$` |
+| D | `/` |
+| E | `\` |
+| F | `○` |
+| G | `△` |
+| H | `□` |
+| I | `×` |
+| J | `~` |
+| K | `<` |
+| L | `>` |
+| M | `∩` |
+| N | `∪` |
+| O | `◇` |
+| P | `*` |
+| Q | `[` |
+| R | `#` |
+| S | `@` |
+| T | `%` |
+| U | `!` |
+| V | `?` |
+| W | `^` |
+| X | `&` |
+| Y | `-` |
+| Z | `_` |
+
+### Regras do alfabeto
+
+- Somente as 26 letras maiúsculas são reconhecidas.
+- Cada símbolo representa uma letra.
+- As letras de uma palavra são escritas diretamente, sem separadores.
+- Espaços separam palavras.
+- Quebras de linha podem organizar o código visualmente.
+- Não existe sintaxe de comentários aprovada.
+
+## 3. Estrutura de sequências
+
+O caractere `;` encerra uma sequência e é obrigatório.
+
+Exemplo:
+
+```text
+8,2;
+5A3;
+12:5;
+```
+
+Uma sequência encerrada não deve continuar sendo interpretada.
+
+## 4. Sistema numérico
+
+O VECTRA aceita números inteiros e decimais.
+
+### Separador decimal
+
+O caractere `:` representa a separação entre a parte inteira e a parte decimal.
+
+Exemplos:
+
+```text
+12:5
+3:14
+10:25
+0:5
+```
+
+Os números podem conter zeros à esquerda e zeros na parte decimal.
+
+Exemplos:
+
+```text
+00025
+0003:50
+0:00000000000000000001
+```
+
+Não existe um limite fixo de quantidade de algarismos definido pela linguagem.
+
+## 5. Operações matemáticas
+
+| Código | Operação |
+|---|---|
+| `A` | Adição |
+| `T` | Subtração |
+| `,` | Multiplicação |
+| `D` | Divisão |
+
+Exemplos:
+
+```text
+8A2;     resultado: 10
+8T2;     resultado: 6
+9,2;     resultado: 18
+6D2;     resultado: 3
+5D2;     resultado: 2:5
+```
+
+### Prioridade matemática
+
+A ordem de execução é:
+
+1. Parênteses.
+2. Multiplicação e divisão.
+3. Adição e subtração.
+4. Operações de mesma prioridade são executadas da esquerda para a direita.
+
+Parênteses podem ser aninhados.
+
+Exemplo:
+
+```text
+((2A3),4)T5;
+```
+
+Resultado: `15`.
+
+Não existem operações de potência ou raiz definidas.
+
+## 6. Números negativos
+
+O caractere `N`, colocado depois de um número, indica que ele é negativo.
+
+Exemplos:
+
+```text
+5N
+25N
+9,4{987}N
+```
+
+O zero é representado normalmente.
+
+Números negativos podem participar das operações matemáticas, inclusive com outros números negativos e com decimais.
+
+Exemplos:
+
+```text
+5NA3N;       resultado: 8N
+2:5NA1:5N;   resultado: 4N
+8ND2N;       resultado: 4
+```
+
+## 7. Expansão numérica
+
+O VECTRA possui uma notação especial para acrescentar algarismos repetidos a um número.
+
+A estrutura é:
+
+```text
+(+d.q)
+```
+
+Onde:
+
+- `d` é o algarismo que será repetido.
+- `q` é a quantidade de repetições.
+
+Exemplos:
+
+```text
+5(+0.3)   = 5000
+5(+2.3)   = 5222
+8(+7.2)   = 877
+1(+9.4)   = 19999
+```
+
+### Acréscimo de algarismos com chaves
+
+As chaves `{}` permitem acrescentar uma sequência de algarismos ao final de um número.
+
+Exemplos:
+
+```text
+6{7}       = 67
+12{345}    = 12345
+6{1000}    = 61000
+5{0000}    = 50000
+```
+
+### Expansões encadeadas
+
+É permitido combinar diferentes blocos de expansão para construir números maiores.
+
+Exemplo:
+
+```text
+2(+0.4){999}.2(+0.2){888}
+```
+
+Resultado:
+
+```text
+20000999200888
